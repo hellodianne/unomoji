@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6D2-5w-ed1">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Game View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="GameViewController" customModule="Unomoji" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.38431372549019605" green="0.42352941176470588" blue="0.68235294117647061" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1032" y="286"/>
+        </scene>
+        <!--GameOver-->
+        <scene sceneID="q1S-tt-uKc">
+            <objects>
+                <viewController storyboardIdentifier="GameOver" title="GameOver" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ver-ik-p29" customClass="GameOverViewController" customModule="Unomoji" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8zf-Zg-UK1"/>
+                        <viewControllerLayoutGuide type="bottom" id="atw-yF-xzI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hOf-x2-Sro">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations! You Won!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GI7-x6-0ne">
+                                <rect key="frame" x="66" y="276" width="468" height="48"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ff-1C-g4S">
+                                <rect key="frame" x="265" y="378" width="71" height="30"/>
+                                <color key="backgroundColor" red="0.38431372549999998" green="0.42352941179999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Play Again">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="xXT-se-MXv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdw-1f-67Y">
+                                <rect key="frame" x="285" y="430" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.38431372549999998" green="0.42352941179999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Exit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="g2P-WG-Re7" kind="show" id="wJI-7g-Gc3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="zdw-1f-67Y" firstAttribute="top" secondItem="6ff-1C-g4S" secondAttribute="bottom" constant="22" id="0HM-i4-sqa"/>
+                            <constraint firstItem="6ff-1C-g4S" firstAttribute="top" secondItem="GI7-x6-0ne" secondAttribute="bottom" constant="54" id="Tiu-oy-ycC"/>
+                            <constraint firstItem="GI7-x6-0ne" firstAttribute="centerX" secondItem="hOf-x2-Sro" secondAttribute="centerX" id="Tpv-te-e8p"/>
+                            <constraint firstItem="GI7-x6-0ne" firstAttribute="centerY" secondItem="hOf-x2-Sro" secondAttribute="centerY" id="cJF-Js-kSP"/>
+                            <constraint firstItem="6ff-1C-g4S" firstAttribute="centerX" secondItem="hOf-x2-Sro" secondAttribute="centerX" id="kzq-A5-Hzh"/>
+                            <constraint firstItem="zdw-1f-67Y" firstAttribute="centerX" secondItem="hOf-x2-Sro" secondAttribute="centerX" id="v0I-P2-r0W"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="whoWon" destination="GI7-x6-0ne" id="HQN-UQ-EKm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3RL-i3-dkt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="220" y="274"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="oeT-UT-Tvn">
+            <objects>
+                <viewController id="g2P-WG-Re7" customClass="ViewController" customModule="Unomoji" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Sir-UV-hG1"/>
+                        <viewControllerLayoutGuide type="bottom" id="c9t-fh-rMa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xvD-HT-iI9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIE-T5-2EQ">
+                                <rect key="frame" x="221" y="101" width="158" height="64"/>
+                                <color key="backgroundColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="👻">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="48" name="AppleColorEmoji"/>
+                                            <font key="NSOriginalFont" size="48" name="RepriseScript"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="UnoMoji! ">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="48" name="RepriseScript"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="😸">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="48" name="AppleColorEmoji"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAG-2h-iPq">
+                                <rect key="frame" x="264" y="424" width="73" height="30"/>
+                                <color key="backgroundColor" red="0.3803921569" green="0.65098039220000004" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="d6h-zS-SIn"/>
+                                </constraints>
+                                <state key="normal" title="New game">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="T8i-0c-oJw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33F-e2-OYG">
+                                <rect key="frame" x="256" y="339" width="88" height="30"/>
+                                <color key="backgroundColor" red="0.3803921569" green="0.65098039220000004" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Wdl-wJ-PPZ"/>
+                                </constraints>
+                                <state key="normal" title="How to play?">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="xxj-qz-pXj" kind="show" id="VWq-a4-zBk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.38431372549999998" green="0.42352941179999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="UAG-2h-iPq" firstAttribute="centerX" secondItem="33F-e2-OYG" secondAttribute="centerX" id="9cP-on-j6x"/>
+                            <constraint firstItem="LIE-T5-2EQ" firstAttribute="centerX" secondItem="xvD-HT-iI9" secondAttribute="centerX" id="9nc-wd-Ntp"/>
+                            <constraint firstItem="c9t-fh-rMa" firstAttribute="top" secondItem="UAG-2h-iPq" secondAttribute="bottom" constant="146" id="g0L-1z-2uo"/>
+                            <constraint firstItem="33F-e2-OYG" firstAttribute="top" secondItem="Sir-UV-hG1" secondAttribute="bottom" constant="319" id="kou-jW-erC"/>
+                            <constraint firstItem="LIE-T5-2EQ" firstAttribute="top" secondItem="Sir-UV-hG1" secondAttribute="bottom" constant="81" id="q3X-jG-pbq"/>
+                            <constraint firstItem="UAG-2h-iPq" firstAttribute="centerX" secondItem="xvD-HT-iI9" secondAttribute="centerX" id="tlc-Eu-Frm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="eIg-na-fS4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mRb-ol-IQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1032" y="-418"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8qM-fu-7UR">
+            <objects>
+                <viewController id="xxj-qz-pXj" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z7B-Ih-XIF"/>
+                        <viewControllerLayoutGuide type="bottom" id="tUZ-WS-ZKe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sy6-sZ-vcg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ij-hK-jsY">
+                                <rect key="frame" x="20" y="20" width="560" height="580"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">                                              Hi there! To win this game, you need to defeat the Alien by having only one card left in your hand before him having one card left in his hand. Both of you will have 5 cards at the beginning of the game and you need to match the color or the emoji of the showing card to throw a card. Also, remember to tap the unomoji button when you have one card left so that you will not get penalize and increase your cards in hand. Have fun! Good luck defeating the alien.</string>
+                                        <attributes>
+                                            <font key="NSFont" size="24" name="Chalkduster"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="4Ij-hK-jsY" firstAttribute="trailing" secondItem="sy6-sZ-vcg" secondAttribute="trailingMargin" id="0au-Qi-chj"/>
+                            <constraint firstItem="4Ij-hK-jsY" firstAttribute="leading" secondItem="sy6-sZ-vcg" secondAttribute="leadingMargin" id="cKW-iq-mHW"/>
+                            <constraint firstItem="tUZ-WS-ZKe" firstAttribute="top" secondItem="4Ij-hK-jsY" secondAttribute="bottom" id="pL2-Pu-i7R"/>
+                            <constraint firstItem="4Ij-hK-jsY" firstAttribute="top" secondItem="Z7B-Ih-XIF" secondAttribute="bottom" id="u1T-eF-juN"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ohI-ai-A6f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1778" y="-418"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="PO3-dm-wBU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6D2-5w-ed1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4MN-Dg-8XV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="g2P-WG-Re7" kind="relationship" relationship="rootViewController" id="Flq-aw-cHu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aDu-BO-fab" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="220" y="-418"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="wJI-7g-Gc3"/>
+        <segue reference="xXT-se-MXv"/>
+    </inferredMetricsTieBreakers>
+</document>
