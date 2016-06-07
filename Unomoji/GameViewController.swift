@@ -49,8 +49,9 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
         targetCardView = UIView(frame: CGRectMake(xtarget, ytarget, 100.0, 130.0))
         gameView!.addSubview(targetCardView!)
         
+        
         //monster to defeat
-        let monsterView = UIView(frame: CGRectMake(xtarget + 200, ytarget-25, 100, 130))
+        let monsterView = UIView(frame: CGRectMake(xtarget + 120, ytarget-25, 100, 130))
         let monsterLabel = UILabel(frame: monsterView.bounds)
         monsterLabel.textAlignment = NSTextAlignment.Center
         monsterLabel.text = "👽"
@@ -59,14 +60,17 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
         gameView!.addSubview(monsterView)
         
         //monster text label
-        monsterTextLabel = UILabel(frame: CGRectMake(xtarget+150, ytarget+70, 250, 100))
-        monsterTextLabel!.text = "Me hungry!"
+        monsterTextLabel = UILabel(frame: CGRectMake(xtarget+120, ytarget+70, 230, 60))
+        monsterTextLabel!.text = "bleep bleep Me hungry!"
+        monsterTextLabel!.textAlignment = NSTextAlignment.Center
         monsterTextLabel!.adjustsFontSizeToFitWidth = true
+        monsterTextLabel!.font = UIFont(name: "ChalkboardSE-Regular", size:30)
+        //monsterTextLabel!.minimumScaleFactor = 12/30
         gameView!.addSubview(monsterTextLabel!)
         
         //draw button view
         let button = UIButton(type: UIButtonType.System) as UIButton
-        button.frame = CGRectMake(xtarget-200, ytarget, 100, 50)
+        button.frame = CGRectMake(ScreenWidth * 0.10, ytarget, 100, 50)
         button.backgroundColor = UIColor.greenColor()
         button.setTitle("Draw", forState:  UIControlState.Normal)
         button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -74,9 +78,10 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
         
         // uno
         let unoButton = UIButton(type: UIButtonType.System) as UIButton
-        unoButton.frame = CGRectMake(xtarget-200, ytarget+70, 100, 50)
+        unoButton.frame = CGRectMake(ScreenWidth * 0.10, ytarget+70, 100, 50)
         unoButton.backgroundColor = UIColor.orangeColor()
         unoButton.setTitle("UNOMOJI!", forState: UIControlState.Normal)
+        unoButton.layer.borderColor = UIColor.blackColor().CGColor
         //add target later
         unoButton.addTarget(self, action: "unoButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
         gameView!.addSubview(unoButton)
@@ -131,10 +136,11 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
             cardShowing = cpuThrowCard
             cardtoHide = self.makeCard(0, card: self.cpuThrowCard!, isShowing: true)
             let cShowingIndex = cardViewOnScreen.indexOf(cardtoHide!)
+            cardtoHide!.userInteractionEnabled = false
             cardViewOnScreen.removeAtIndex(cShowingIndex!)
             card.hidden = true
             cpuCurrentCard = playerCPU!.cardsOnHand
-            monsterTextLabel!.text = "MWAHAHAH I only have \(cpuCurrentCard!.count) cards left!"
+            monsterTextLabel!.text = "MWAHAH I only have \(cpuCurrentCard!.count) cards left!"
         } else {
             if cardDeck.count == 0 {
                 gameOver()
@@ -204,10 +210,10 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
         
     }
     func tick(timer: NSTimer) {
-        monsterTextLabel!.text = String(secondsLeft)
+        monsterTextLabel!.text = "💣   \(secondsLeft)"
         if secondsLeft == 0 && playerWonandGameOver == false {
             timer.invalidate()
-            monsterTextLabel!.text = "BWAHAHA! YOU FORGOT TO TOUCH THE BUTTON, MORE CARDS FOR YOU!!!!"
+            monsterTextLabel!.text = "BWAHAHA! MORE CARDS FOR YOU!!!!"
             let addCards = cardDeck.choose(3)
             
             for i in addCards {
@@ -215,6 +221,7 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
                 initialX += constantX
             }
             UIView.animateWithDuration(0.5, animations: { self.updateViewCards()})
+            secondsLeft = 5
             
         }
         secondsLeft-=1
@@ -278,6 +285,7 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
         }
         
     }
+    
     
     
 
