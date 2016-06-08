@@ -15,6 +15,8 @@
 		6E1568311CF41BBD00CD769A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1568301CF41BBD00CD769A /* CardView.swift */; };
 		6E1568331CF41C2A00CD769A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1568321CF41C2A00CD769A /* Player.swift */; };
 		6E1568351CF41C5500CD769A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1568341CF41C5500CD769A /* Card.swift */; };
+		6E6EA27E1D07725600EB7221 /* intro.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 6E6EA27D1D07725600EB7221 /* intro.aiff */; };
+		6E6EA2801D0775FE00EB7221 /* bgmusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6E6EA27F1D0775FE00EB7221 /* bgmusic.mp3 */; };
 		6E725BAC1CF968E300193A63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E725BAB1CF968E300193A63 /* ViewController.swift */; };
 		6E725BAE1CF96FC400193A63 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E725BAD1CF96FC400193A63 /* GameOverViewController.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +32,8 @@
 		6E1568301CF41BBD00CD769A /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		6E1568321CF41C2A00CD769A /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		6E1568341CF41C5500CD769A /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		6E6EA27D1D07725600EB7221 /* intro.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = intro.aiff; sourceTree = "<group>"; };
+		6E6EA27F1D0775FE00EB7221 /* bgmusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgmusic.mp3; sourceTree = "<group>"; };
 		6E725BAB1CF968E300193A63 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6E725BAD1CF96FC400193A63 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,6 +76,8 @@
 				6E1568321CF41C2A00CD769A /* Player.swift */,
 				6E1568341CF41C5500CD769A /* Card.swift */,
 				6E1568221CF40E5300CD769A /* Main.storyboard */,
+				6E6EA27D1D07725600EB7221 /* intro.aiff */,
+				6E6EA27F1D0775FE00EB7221 /* bgmusic.mp3 */,
 				6E1568251CF40E5300CD769A /* Assets.xcassets */,
 				6E1568271CF40E5300CD769A /* LaunchScreen.storyboard */,
 				6E15682A1CF40E5300CD769A /* Info.plist */,
@@ -137,7 +143,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E6EA2801D0775FE00EB7221 /* bgmusic.mp3 in Resources */,
 				6E1568291CF40E5300CD769A /* LaunchScreen.storyboard in Resources */,
+				6E6EA27E1D07725600EB7221 /* intro.aiff in Resources */,
 				6E1568261CF40E5300CD769A /* Assets.xcassets in Resources */,
 				6E1568241CF40E5300CD769A /* Main.storyboard in Resources */,
 			);

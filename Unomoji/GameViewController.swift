@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class GameViewController: UIViewController, CardMovedDelegateProtocol {
     
@@ -32,13 +33,23 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
     var cpuCurrentCard: [Card]?
     var cpuPlayable: [Card]?
     
-    
     //timer
     var secondsLeft = 5
+    
+    //sounds
+    var audioPlayer: AVAudioPlayer!
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //music
+        let bgSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("bgmusic", ofType: "mp3")!)
+        audioPlayer = try!AVAudioPlayer(contentsOfURL: bgSound)
+        audioPlayer.prepareToPlay()
+        audioPlayer.play()
+        
+        
+        
         //Views
         gameView = UIView(frame: CGRectMake(0, 0, ScreenWidth, ScreenHeight))
         gameView!.backgroundColor = UIColor(red:0.38, green:0.42, blue:0.68, alpha:1.0)
@@ -95,6 +106,7 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
         dealFirstCards()
         
     }
+    
     
     //GAME METHODS
         //new game
@@ -155,6 +167,7 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
     }
     
     func gameOver() {
+        audioPlayer.stop()
         let controller = storyboard!.instantiateViewControllerWithIdentifier("GameOver") as! GameOverViewController
         
         
