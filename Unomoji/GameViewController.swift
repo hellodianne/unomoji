@@ -28,6 +28,7 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
     var playerCPU: Player?
     var cardShowing: Card?
     var playerWonandGameOver: Bool = false
+    
     //CPU Variables
     var cpuThrowCard: Card?
     var cpuCurrentCard: [Card]?
@@ -42,15 +43,16 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //music
+
         let bgSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("bgmusic", ofType: "mp3")!)
         audioPlayer = try!AVAudioPlayer(contentsOfURL: bgSound)
+        audioPlayer.numberOfLoops = -1
         audioPlayer.prepareToPlay()
         audioPlayer.play()
         
         
         
-        //Views
+        //Mark: Game Views
         gameView = UIView(frame: CGRectMake(0, 0, ScreenWidth, ScreenHeight))
         gameView!.backgroundColor = UIColor(red:0.38, green:0.42, blue:0.68, alpha:1.0)
         self.view.addSubview(gameView!)
@@ -71,12 +73,11 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
         gameView!.addSubview(monsterView)
         
         //monster text label
-        monsterTextLabel = UILabel(frame: CGRectMake(xtarget+120, ytarget+70, 230, 60))
+        monsterTextLabel = UILabel(frame: CGRectMake(xtarget + 120, ytarget+70, 200, 60))
         monsterTextLabel!.text = "bleep bleep Me hungry!"
         monsterTextLabel!.textAlignment = NSTextAlignment.Center
         monsterTextLabel!.adjustsFontSizeToFitWidth = true
         monsterTextLabel!.font = UIFont(name: "ChalkboardSE-Regular", size:30)
-        //monsterTextLabel!.minimumScaleFactor = 12/30
         gameView!.addSubview(monsterTextLabel!)
         
         //draw button view
@@ -87,18 +88,16 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
         button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
         gameView!.addSubview(button)
         
-        // uno
+        // uno button view
         let unoButton = UIButton(type: UIButtonType.System) as UIButton
         unoButton.frame = CGRectMake(ScreenWidth * 0.10, ytarget+70, 100, 50)
         unoButton.backgroundColor = UIColor.orangeColor()
         unoButton.setTitle("UNOMOJI!", forState: UIControlState.Normal)
         unoButton.layer.borderColor = UIColor.blackColor().CGColor
-        //add target later
         unoButton.addTarget(self, action: "unoButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
         gameView!.addSubview(unoButton)
         
         
-        //for first cards dealt
         //first cards dealt
         initialX = ScreenWidth * 0.10
         constantX = (ScreenWidth * 0.70) / 5
@@ -109,22 +108,16 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
     
     
     //GAME METHODS
-        //new game
-    
     func dealFirstCards () {
         
         cardShowing = cardDeck.chooseOne()
-        
-        //choose cards for playeruser
+
         let firstCards: [Card] = cardDeck.choose(5)
-       
-        //using xtarget here as xoffset, show cardshowing on the target spot
+
         cardtoHide = makeCard(ScreenWidth/2 - 100/2, card: cardShowing!, isShowing: true)
         cardtoHide!.userInteractionEnabled = false
-        let cShowingIndex = cardViewOnScreen.indexOf(cardtoHide!)
-        cardViewOnScreen.removeAtIndex(cShowingIndex!)
-    
-   
+        removeFromViewList(cardtoHide!)
+  
         for i in firstCards {
             makeCard(initialX, card: i, isShowing: false)
             initialX += constantX
@@ -146,10 +139,9 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
         if cpuPlayable!.count > 0 {
             cpuThrowCard = playerCPU!.throwCard(cpuPlayable![0])
             cardShowing = cpuThrowCard
-            cardtoHide = self.makeCard(0, card: self.cpuThrowCard!, isShowing: true)
-            let cShowingIndex = cardViewOnScreen.indexOf(cardtoHide!)
+            cardtoHide = makeCard(0, card: self.cpuThrowCard!, isShowing: true)
+            removeFromViewList(cardtoHide!)
             cardtoHide!.userInteractionEnabled = false
-            cardViewOnScreen.removeAtIndex(cShowingIndex!)
             card.hidden = true
             cpuCurrentCard = playerCPU!.cardsOnHand
             monsterTextLabel!.text = "MWAHAH I only have \(cpuCurrentCard!.count) cards left!"
@@ -186,13 +178,12 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
     
     
     
-    // CARDVIEW DELEGATE, what will happen when card is tapped?
+    //Mark: CARDVIEW DELEGATE
     func cardView(cardView: CardView, didMoveToPoint point: CGPoint) {
-        //check if playable
         if playerUser!.isPlayable(cardView, cardShowing: cardShowing!) == true {
-            let cvIndex = cardViewOnScreen.indexOf(cardView)
-            cardViewOnScreen.removeAtIndex(cvIndex!)
-            //update cardShowing
+            
+            removeFromViewList(cardView)
+            
             cardShowing = cardView.card
             if cardViewOnScreen.count == 1 {
                 setTimer()
@@ -215,20 +206,21 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
     }
     
     
-    //TIMER
+    //Mark: TIMER
     
     func setTimer() {
         let timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "tick:", userInfo: nil, repeats: true)
         timer.fire()
         
     }
+    
     func tick(timer: NSTimer) {
         monsterTextLabel!.text = "💣   \(secondsLeft)"
         if secondsLeft == 0 && playerWonandGameOver == false {
             timer.invalidate()
             monsterTextLabel!.text = "BWAHAHA! MORE CARDS FOR YOU!!!!"
             let addCards = cardDeck.choose(3)
-            
+  
             for i in addCards {
                 makeCard(initialX, card: i, isShowing: false)
                 initialX += constantX
@@ -239,20 +231,8 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
         }
         secondsLeft-=1
     }
-
-
     
-    func unoButtonAction(sender: UIButton!) {
-        //player won
-        if cardViewOnScreen.count == 1 {
-            playerWonandGameOver = true
-            gameOver()
-        } else {
-            monsterTextLabel!.text = "No you can't do that!"
-        }
-    }
-    
-    //METHODS FOR MAKING CARDVIEWS
+    //Mark: MAKING CARDVIEWS
     func makeCard(xOffset: CGFloat, card: Card, isShowing: Bool) -> CardView{
         let showingCenter = targetCardView!.center
         let card = CardView(xOffset: xOffset, toCenter: showingCenter, card: card, isShowing: isShowing)
@@ -262,16 +242,21 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
         return card
     }
     
+    //Mark: PLAYER HAS UNO
+    func unoButtonAction(sender: UIButton!) {
+        if cardViewOnScreen.count == 1 {
+            playerWonandGameOver = true
+            gameOver()
+        } else {
+            monsterTextLabel!.text = "No you can't do that!"
+        }
+    }
     
-    
-    
-    //UPDATING VIEW
+    //Mark: DRAW ADDITIONAL CARD
     func buttonAction(sender:UIButton!){
-        //Todo: check first if there is a card to pick, otherwise gameover
         if cardDeck.count == 0 {
             gameOver()
         } else {
-            //showingcard should not move
             let showingCenter = targetCardView!.center
             let newCard = CardView(xOffset: initialX, toCenter: showingCenter, card: cardDeck.chooseOne(), isShowing: false)
             newCard.movedDelegate = self
@@ -282,7 +267,7 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
         }
     }
     
-    func getXNewconstant() -> CGFloat {
+    private func getXNewconstant() -> CGFloat {
         let xConstant: CGFloat = ceil((ScreenWidth * 0.70) / CGFloat(cardViewOnScreen.count))
         return xConstant
         
@@ -299,11 +284,13 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
         
     }
     
-    
-    
 
-   
-
+    func removeFromViewList(CV: CardView) {
+        let cvIndex = cardViewOnScreen.indexOf(CV)
+        cardViewOnScreen.removeAtIndex(cvIndex!)
+    }
 
 }
+
+
 

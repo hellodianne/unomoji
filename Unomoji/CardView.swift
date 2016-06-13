@@ -48,9 +48,9 @@ class CardView: UIView {
         } else {
             super.init(frame: frame)
         }
+        
         let emLabel = UILabel(frame: self.bounds)
         emLabel.textAlignment = NSTextAlignment.Center
-        //emLabel.textColor = UIColor.whiteColor()
         emLabel.text = card.emoji
         emLabel.font = emLabel.font.fontWithSize(78)
         self.addSubview(emLabel)

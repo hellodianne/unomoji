@@ -29,11 +29,6 @@ struct Player {
         return cardtoThrow
     }
     
-    //might be erased
-    func isUno() -> Bool{
-        //check length of cardsOnHand if 1
-        return cardsOnHand.count == 1
-    }
     
     func count() -> Int {
         return cardsOnHand.count
@@ -46,12 +41,6 @@ struct Player {
     }
     
     func isPlayable(card: CardView, cardShowing: Card) -> Bool {
-        
-//        print("card color \(card.card.color)")
-//        print("cardshowing color \(cardShowing.color)")
-//        print("card emoji \(card.card.emoji)")
-//        print("cardshowing emoji \(cardShowing.emoji)")
-        
         return card.card.color == cardShowing.color || card.card.emoji == cardShowing.emoji
     }
     
@@ -64,7 +53,7 @@ struct Player {
     
     
     
-    //for card removal
+    //for removing cards
     func indexOf(card: Card) -> Int? {
         return cardsOnHand.indexOf() {$0.name == card.name}
     }

@@ -84,12 +84,7 @@ extension Array {
         let a = self[index]
         self.removeAtIndex(index)
         return a
-//        let index = []
-//        let a = element[index]
-//        return a
-//        let a = self[Int(arc4random_uniform(UInt32(count)))]
-//        self.removeElement(a)
-//        return a
+
     }
     
     mutating func choose(n: Int) -> [Element] {
