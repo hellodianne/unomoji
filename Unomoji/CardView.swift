@@ -17,13 +17,9 @@ protocol CardMovedDelegateProtocol {
 class CardView: UIView {
 
     let card: Card
-    
-    let width: CGFloat = 85.0
-    let height: CGFloat = 120.0
     var toCenter: CGPoint
     
-    let ScreenHeight = UIScreen.mainScreen().bounds.size.height
-    let ScreenWidth = UIScreen.mainScreen().bounds.size.width
+    
     
     
     var movedDelegate: CardMovedDelegateProtocol?
@@ -33,6 +29,12 @@ class CardView: UIView {
     }
     
     init(xOffset: CGFloat, toCenter: CGPoint, card: Card, isShowing: Bool){
+        
+        let ScreenHeight = UIScreen.mainScreen().bounds.size.height
+        let ScreenWidth = UIScreen.mainScreen().bounds.size.width
+        let width: CGFloat = ScreenWidth * 0.12
+        let height: CGFloat = ScreenHeight * 0.30
+        
         self.card = card
         self.toCenter = toCenter
      
@@ -53,6 +55,7 @@ class CardView: UIView {
         emLabel.textAlignment = NSTextAlignment.Center
         emLabel.text = card.emoji
         emLabel.font = emLabel.font.fontWithSize(78)
+        emLabel.adjustsFontSizeToFitWidth = true
         self.addSubview(emLabel)
         
         self.layer.borderColor = UIColor.blackColor().CGColor

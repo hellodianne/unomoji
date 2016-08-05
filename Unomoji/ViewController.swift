@@ -21,7 +21,6 @@ class ViewController: UIViewController {
         audioPlayer.prepareToPlay()
         audioPlayer.play()
         
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

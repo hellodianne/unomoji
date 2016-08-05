@@ -73,9 +73,10 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
         gameView!.addSubview(monsterView)
         
         //monster text label
-        monsterTextLabel = UILabel(frame: CGRectMake(xtarget + 120, ytarget+70, 200, 60))
+        monsterTextLabel = UILabel(frame: CGRectMake(xtarget + 120, ytarget+70, 150, 60))
         monsterTextLabel!.text = "bleep bleep Me hungry!"
         monsterTextLabel!.textAlignment = NSTextAlignment.Center
+        monsterTextLabel!.minimumScaleFactor = 0.3
         monsterTextLabel!.adjustsFontSizeToFitWidth = true
         monsterTextLabel!.font = UIFont(name: "ChalkboardSE-Regular", size:30)
         gameView!.addSubview(monsterTextLabel!)
@@ -85,7 +86,7 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
         button.frame = CGRectMake(ScreenWidth * 0.10, ytarget, 100, 50)
         button.backgroundColor = UIColor.greenColor()
         button.setTitle("Draw", forState:  UIControlState.Normal)
-        button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action: #selector(GameViewController.buttonAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         gameView!.addSubview(button)
         
         // uno button view
@@ -94,7 +95,7 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
         unoButton.backgroundColor = UIColor.orangeColor()
         unoButton.setTitle("UNOMOJI!", forState: UIControlState.Normal)
         unoButton.layer.borderColor = UIColor.blackColor().CGColor
-        unoButton.addTarget(self, action: "unoButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        unoButton.addTarget(self, action: #selector(GameViewController.unoButtonAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         gameView!.addSubview(unoButton)
         
         
@@ -209,7 +210,7 @@ class GameViewController: UIViewController, CardMovedDelegateProtocol {
     //Mark: TIMER
     
     func setTimer() {
-        let timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "tick:", userInfo: nil, repeats: true)
+        let timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(GameViewController.tick(_:)), userInfo: nil, repeats: true)
         timer.fire()
         
     }
