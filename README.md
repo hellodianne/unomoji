@@ -4,4 +4,4 @@
 
 <p>Unomoji is a card game based on the game uno. The goal of the game is to have one card left on hand or to have lesser cards than the alien. User can throw a card that matches the emoji or color of the showing card. The user will only have 5 seconds to tap the unomoji button when there is 1 card left on his hand, otherwise, the user will have 5 additional cards.</p>
 
-![Alt text](https://github.com/hellodianne/unomoji/unomoji.gif)
+![Alt text](https://github.com/hellodianne/unomoji/blob/master/unomoji.gif)
